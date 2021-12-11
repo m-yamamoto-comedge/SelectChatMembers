@@ -72,6 +72,11 @@ return static function (RouteBuilder $routes) {
          */
         $builder->fallbacks();
     });
+    
+    $routes->connect(
+        '/hello',
+        ['controller' => 'Hello', 'action' => 'hello']
+    );
 
     /*
      * If you need a different set of middleware or none at all,
