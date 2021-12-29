@@ -13,14 +13,30 @@ class UsersRepository
 {
     /**
      * 取得
+     * $usersCondition ユーザー情報検索条件
      */
-    public function select()
+    public function select($usersCondition)
     {
+        $whereSpec = array();
+
+        // 所属
+        if ($usersCondition->belongsCd > 0) {
+            array_push($whereSpec, ['belongs_cd' => $usersCondition->belongsCd]);
+        }
+        
+        // 役職
+        if ($usersCondition->positionCd > 0) {
+            array_push($whereSpec, ['position_cd' => $usersCondition->positionCd]);
+        }
+
         $connection = ConnectionManager::get('default');
         $results = $connection
-        ->execute(
-            'SELECT * FROM user'
-        );
+            ->newQuery()
+            ->select('*')
+            ->from('users')
+            ->where($whereSpec)
+            ->execute()
+            ->fetchAll('assoc');
         return $results;
     }
 
