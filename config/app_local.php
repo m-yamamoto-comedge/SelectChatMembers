@@ -36,7 +36,7 @@ return [
      */
     'Datasources' => [
         'default' => [
-            'host' => 'selectChatMembers',
+            'host' => 'localhost',
             'username' => 'postgres',
             'password' => 'bcg',
             'database' => 'selectChatMembers',
@@ -49,7 +49,7 @@ return [
          * The test connection is used during the test suite.
          */
         'test' => [
-            'host' => 'selectChatMembers',
+            'host' => 'localhost',
             //'port' => 'non_standard_port_number',
             'username' => 'postgres',
             'password' => 'bcg',

@@ -15,11 +15,11 @@ class HelloController extends Controller
     
     public function hello()
     {
-        // $usersRepository = new UsersRepository();
-        // $usersCondition = new UsersCondition();
+        $usersRepository = new UsersRepository();
+        $usersCondition = new UsersCondition();
         // $usersCondition->belongsCd = 0;
         // $usersCondition->positionCd = 0;
-        // $userList = $usersRepository->select($usersCondition);
+        $userList = $usersRepository->select($usersCondition);
         // $userList = $usersRepository->insert();
         // $userList = $usersRepository->update();
         // $userList = $usersRepository->delete(2);

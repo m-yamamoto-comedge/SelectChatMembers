@@ -37,6 +37,7 @@ class UsersRepository
             ->where($whereSpec)
             ->execute()
             ->fetchAll('assoc');
+            var_dump($results);
         return $results;
     }
 
