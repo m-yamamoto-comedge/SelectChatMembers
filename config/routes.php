@@ -28,10 +28,10 @@ return static function (RouteBuilder $routes) {
     $routes->setRouteClass(DashedRoute::class);
 
     $routes->scope('/', function (RouteBuilder $builder) {
-        $builder->connect('/', ['controller' => 'hello', 'action' => 'hello']);
-        // $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-        // $builder->connect('/pages/*', 'Pages::display');
-        $builder->connect('/hello', ['controller' => 'hello', 'action' => 'hello']);
+        // $builder->connect('/', ['controller' => 'Hello', 'action' => 'hello']);
+        $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+        $builder->connect('/pages/*', 'Pages::display');
+        // $builder->connect('/hello', ['controller' => 'Hello', 'action' => 'hello']);
         $builder->fallbacks();
     });
     
