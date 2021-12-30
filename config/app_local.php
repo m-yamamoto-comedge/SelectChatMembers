@@ -36,10 +36,15 @@ return [
      */
     'Datasources' => [
         'default' => [
-            'host' => 'localhost',
-            'username' => 'postgres',
-            'password' => 'bcg',
+            'host' => 'scmdbserver.postgres.database.azure.com',
+            'port' => '5432',
+            'username' => 'scm@scmdbserver',
+            'password' => '@Bcgbcgbcg',
             'database' => 'selectChatMembers',
+            // 'host' => 'localhost',
+            // 'username' => 'postgres',
+            // 'password' => 'bcg',
+            // 'database' => 'selectChatMembers',
             'log' => true,
             // 'schema' => 'public',
             'url' => env('DATABASE_URL', null),
@@ -49,11 +54,16 @@ return [
          * The test connection is used during the test suite.
          */
         'test' => [
-            'host' => 'localhost',
-            //'port' => 'non_standard_port_number',
-            'username' => 'postgres',
-            'password' => 'bcg',
+            'host' => 'scmdbserver.postgres.database.azure.com',
+            'port' => '5432',
+            'username' => 'scm@scmdbserver',
+            'password' => '@Bcgbcgbcg',
             'database' => 'selectChatMembers',
+            // 'host' => 'localhost',
+            // //'port' => 'non_standard_port_number',
+            // 'username' => 'postgres',
+            // 'password' => 'bcg',
+            // 'database' => 'selectChatMembers',
             'log' => true,
             // 'schema' => 'public',
             'url' => env('DATABASE_TEST_URL', 'sqlite://127.0.0.1/tests.sqlite'),
