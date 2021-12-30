@@ -27,14 +27,14 @@ use Cake\Routing\RouteBuilder;
 return static function (RouteBuilder $routes) {
     $routes->setRouteClass(DashedRoute::class);
 
-    // $routes->scope('/', function (RouteBuilder $builder) {
-    //     // $builder->connect('/', ['controller' => 'Hello', 'action' => 'hello']);
+    $routes->scope('/', function (RouteBuilder $builder) {
+        $builder->connect('/', ['controller' => 'Hello', 'action' => 'hello']);
     //     $builder->connect('/pages/*', 'Pages::display');
-    //     $builder->fallbacks();
-    // });
+        $builder->fallbacks();
+    });
     
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-    $routes->connect('/hello', ['controller' => 'Hello', 'action' => 'hello']);
+    // $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    // $routes->connect('/hello', ['controller' => 'Hello', 'action' => 'hello']);
 
     /*
      * If you need a different set of middleware or none at all,
