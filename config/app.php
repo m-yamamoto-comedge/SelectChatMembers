@@ -2,7 +2,7 @@
 
 use Cake\Cache\Engine\FileEngine;
 use Cake\Database\Connection;
-use Cake\Database\Driver\Mysql;
+use Cake\Database\Driver\Postgres;
 use Cake\Error\ExceptionRenderer;
 use Cake\Log\Engine\FileLog;
 use Cake\Mailer\Transport\MailTransport;
@@ -109,78 +109,30 @@ return [
             //'headerCharset' => 'utf-8',
         ],
     ],
-
-    /*
-     * Connection information used by the ORM to connect
-     * to your application's datastores.
-     *
-     * ### Notes
-     * - Drivers include Mysql Postgres Sqlite Sqlserver
-     *   See vendor\cakephp\cakephp\src\Database\Driver for complete list
-     * - Do not use periods in database name - it may lead to error.
-     *   See https://github.com/cakephp/cakephp/issues/6471 for details.
-     * - 'encoding' is recommended to be set to full UTF-8 4-Byte support.
-     *   E.g set it to 'utf8mb4' in MariaDB and MySQL and 'utf8' for any
-     *   other RDBMS.
-     */
     'Datasources' => [
-        /*
-         * These configurations should contain permanent settings used
-         * by all environments.
-         *
-         * The values in app_local.php will override any values set here
-         * and should be used for local and per-environment configurations.
-         *
-         * Environment variable based configurations can be loaded here or
-         * in app_local.php depending on the applications needs.
-         */
         'default' => [
             'className' => Connection::class,
-            'driver' => Mysql::class,
+            'driver' => Postgres::class,
             'persistent' => false,
+            'host' => 'localhost',
+            'username' => 'postgres',
+            'password' => 'bcg',
+            'database' => 'selectChatMembers',
             'timezone' => 'UTC',
-
-            /*
-             * For MariaDB/MySQL the internal default changed from utf8 to utf8mb4, aka full utf-8 support, in CakePHP 3.6
-             */
-            //'encoding' => 'utf8mb4',
-
-            /*
-             * If your MySQL server is configured with `skip-character-set-client-handshake`
-             * then you MUST use the `flags` config to set your charset encoding.
-             * For e.g. `'flags' => [\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4']`
-             */
             'flags' => [],
             'cacheMetadata' => true,
             'log' => false,
-
-            /*
-             * Set identifier quoting to true if you are using reserved words or
-             * special characters in your table or column names. Enabling this
-             * setting will result in queries built using the Query Builder having
-             * identifiers quoted when creating SQL. It should be noted that this
-             * decreases performance because each query needs to be traversed and
-             * manipulated before being executed.
-             */
             'quoteIdentifiers' => false,
-
-            /*
-             * During development, if using MySQL < 5.6, uncommenting the
-             * following line could boost the speed at which schema metadata is
-             * fetched from the database. It can also be set directly with the
-             * mysql configuration directive 'innodb_stats_on_metadata = 0'
-             * which is the recommended value in production environments
-             */
             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
         ],
-
-        /*
-         * The test connection is used during the test suite.
-         */
         'test' => [
             'className' => Connection::class,
-            'driver' => Mysql::class,
+            'driver' => Postgres::class,
             'persistent' => false,
+            'host' => 'localhost',
+            'username' => 'postgres',
+            'password' => 'bcg',
+            'database' => 'selectChatMembers',
             'timezone' => 'UTC',
             //'encoding' => 'utf8mb4',
             'flags' => [],
@@ -220,46 +172,6 @@ return [
             'scopes' => ['queriesLog'],
         ],
     ],
-
-    /*
-     * Session configuration.
-     *
-     * Contains an array of settings to use for session configuration. The
-     * `defaults` key is used to define a default preset to use for sessions, any
-     * settings declared here will override the settings of the default config.
-     *
-     * ## Options
-     *
-     * - `cookie` - The name of the cookie to use. Defaults to value set for `session.name` php.ini config.
-     *    Avoid using `.` in cookie names, as PHP will drop sessions from cookies with `.` in the name.
-     * - `cookiePath` - The url path for which session cookie is set. Maps to the
-     *   `session.cookie_path` php.ini config. Defaults to base path of app.
-     * - `timeout` - The time in minutes the session should be valid for.
-     *    Pass 0 to disable checking timeout.
-     *    Please note that php.ini's session.gc_maxlifetime must be equal to or greater
-     *    than the largest Session['timeout'] in all served websites for it to have the
-     *    desired effect.
-     * - `defaults` - The default configuration set to use as a basis for your session.
-     *    There are four built-in options: php, cake, cache, database.
-     * - `handler` - Can be used to enable a custom session handler. Expects an
-     *    array with at least the `engine` key, being the name of the Session engine
-     *    class to use for managing the session. CakePHP bundles the `CacheSession`
-     *    and `DatabaseSession` engines.
-     * - `ini` - An associative array of additional ini values to set.
-     *
-     * The built-in `defaults` options are:
-     *
-     * - 'php' - Uses settings defined in your php.ini.
-     * - 'cake' - Saves session files in CakePHP's /tmp directory.
-     * - 'database' - Uses CakePHP's database sessions.
-     * - 'cache' - Use the Cache class to save sessions.
-     *
-     * To define a custom session handler, save it at src/Network/Session/<name>.php.
-     * Make sure the class implements PHP's `SessionHandlerInterface` and set
-     * Session.handler to <name>
-     *
-     * To use database sessions, load the SQL file located at config/schema/sessions.sql
-     */
     'Session' => [
         'defaults' => 'php',
     ],
