@@ -25,7 +25,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT', '__SALT__'),
+        'salt' => env('SECURITY_SALT', '86649d0b32b4a66d18e3515c8e5d96ebc3625c01800f0964062bbcbf3c3a1b4d'),
     ],
 
     /*
@@ -34,72 +34,43 @@ return [
      *
      * See app.php for more configuration options.
      */
-    
     'Datasources' => [
-        
         'default' => [
-            // 'className' => Connection::class,
-            'driver' => Postgres::class,
-            'persistent' => false,
             'host' => 'localhost',
-            'username' => 'postgres',
-            'password' => 'bcg',
-            'database' => 'selectChatMembers',
-            'timezone' => 'UTC',
-            'flags' => [],
-            'cacheMetadata' => true,
-            'log' => false,
-            'quoteIdentifiers' => false,
+            /*
+             * CakePHP will use the default DB port based on the driver selected
+             * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
+             * the following line and set the port accordingly
+             */
+            //'port' => 'non_standard_port_number',
+
+            'username' => 'my_app',
+            'password' => 'secret',
+
+            'database' => 'my_app',
+            /*
+             * If not using the default 'public' schema with the PostgreSQL driver
+             * set it here.
+             */
+            //'schema' => 'myapp',
+
+            /*
+             * You can use a DSN string to set the entire configuration
+             */
             'url' => env('DATABASE_URL', null),
         ],
-        // 'default' => [
-        //     'host' => 'scmdbserver.postgres.database.azure.com',
-        //     'port' => '5432',
-        //     'username' => 'scm@scmdbserver',
-        //     'password' => '@Bcgbcgbcg',
-        //     'database' => 'selectChatMembers',
-        //     // 'host' => 'localhost',
-        //     // 'username' => 'postgres',
-        //     // 'password' => 'bcg',
-        //     // 'database' => 'selectChatMembers',
-        //     'log' => true,
-        //     // 'schema' => 'public',
-        //     'url' => env('DATABASE_URL', null),
-        // ],
 
         /*
          * The test connection is used during the test suite.
          */
-        // 'test' => [
-        //     'host' => 'scmdbserver.postgres.database.azure.com',
-        //     'port' => '5432',
-        //     'username' => 'scm@scmdbserver',
-        //     'password' => '@Bcgbcgbcg',
-        //     'database' => 'selectChatMembers',
-        //     // 'host' => 'localhost',
-        //     // //'port' => 'non_standard_port_number',
-        //     // 'username' => 'postgres',
-        //     // 'password' => 'bcg',
-        //     // 'database' => 'selectChatMembers',
-        //     'log' => true,
-        //     // 'schema' => 'public',
-        //     'url' => env('DATABASE_TEST_URL', 'sqlite://127.0.0.1/tests.sqlite'),
-        // ],
-        
         'test' => [
-            // 'className' => Connection::class,
-            'driver' => Postgres::class,
-            'persistent' => false,
             'host' => 'localhost',
-            'username' => 'postgres',
-            'password' => 'bcg',
-            'database' => 'selectChatMembers',
-            'timezone' => 'UTC',
-            'flags' => [],
-            'cacheMetadata' => true,
-            'log' => false,
-            'quoteIdentifiers' => false,
-            'url' => env('DATABASE_URL', null),
+            //'port' => 'non_standard_port_number',
+            'username' => 'my_app',
+            'password' => 'secret',
+            'database' => 'test_myapp',
+            //'schema' => 'myapp',
+            'url' => env('DATABASE_TEST_URL', 'sqlite://127.0.0.1/tests.sqlite'),
         ],
     ],
 
