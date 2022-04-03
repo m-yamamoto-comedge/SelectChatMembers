@@ -41,12 +41,6 @@ $checkConnection = function (string $name) {
     return compact('connected', 'error');
 };
 
-if (!Configure::read('debug')) :
-    throw new NotFoundException(
-        'Please replace templates/Pages/home.php with your own version or re-enable debug mode.'
-    );
-endif;
-
 $cakeDescription = 'CakePHP: the rapid development PHP framework';
 ?>
 <!DOCTYPE html>
@@ -96,7 +90,6 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
                                 </li>
                             </ul>
                         </div>
-                        <?php Debugger::checkSecurityKeys(); ?>
                     </div>
                 </div>
                 <div class="row">
@@ -166,24 +159,6 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
                             <li class="bullet success">CakePHP is able to connect to the database.</li>
                         <?php else : ?>
                             <li class="bullet problem">CakePHP is NOT able to connect to the database.<br /><?= $result['error'] ?></li>
-                        <?php endif; ?>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4>DebugKit</h4>
-                        <ul>
-                        <?php if (Plugin::isLoaded('DebugKit')) : ?>
-                            <li class="bullet success">DebugKit is loaded.</li>
-                            <?php
-                            $result = $checkConnection('debug_kit');
-                            ?>
-                            <?php if ($result['connected']) : ?>
-                                <li class="bullet success">DebugKit can connect to the database.</li>
-                            <?php else : ?>
-                                <li class="bullet problem">DebugKit is <strong>not</strong> able to connect to the database.<br /><?= $result['error'] ?></li>
-                            <?php endif; ?>
-                        <?php else : ?>
-                            <li class="bullet problem">DebugKit is <strong>not</strong> loaded.</li>
                         <?php endif; ?>
                         </ul>
                     </div>
