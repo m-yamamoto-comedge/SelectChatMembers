@@ -21,6 +21,8 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
+use App\Controller\Condition\UsersCondition;
+use App\Repository\UsersRepository;
 
 /**
  * Static content controller
@@ -45,6 +47,14 @@ class PagesController extends AppController
      */
     public function display(string ...$path): ?Response
     {
+        
+        // $usersRepository = new UsersRepository();
+        // $usersCondition = new UsersCondition();
+        // $usersCondition->belongsCd = 0;
+        // $usersCondition->positionCd = 0;
+        // $userList = $usersRepository->select($usersCondition);
+        // var_dump($userList);
+
         if (!$path) {
             return $this->redirect('/');
         }

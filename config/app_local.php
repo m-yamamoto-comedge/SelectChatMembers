@@ -14,9 +14,9 @@ return [
         'default' => [
             'host' => 'localhost',
             //'port' => 'non_standard_port_number',
-            'username' => 'my_app',
-            'password' => 'secret',
-            'database' => 'my_app',
+            // 'username' => 'my_app',
+            // 'password' => 'secret',
+            // 'database' => 'my_app',
             //'schema' => 'myapp',
             'url' => env('DATABASE_URL', null),
         ],
